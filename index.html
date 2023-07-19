@@ -28,9 +28,53 @@
                 </div>
             </div>
             <div class="range-input">
-                <input type="range" class="range-min" min="1" max="50" value="16">
-                <input type="range" class="range-max" min="1" max="50" value="35">
+                <input type="range" class="range-min" min="0" max="50" value="16">
+                <input type="range" class="range-max" min="0" max="50" value="35">
             </div>
         </div>
+        <script>
+            const rangeInput = document.querySelectorAll(".range-input input")
+            const lengthInput = document.querySelectorAll(".primer-length input")
+            const progress = document.querySelector(".slider .progress")
+            let inputGap = 2;
+            rangeInput.forEach(input => {
+                input.addEventListener("input", e => {
+                    let minValue = parseInt(rangeInput[0].value);
+                    let maxValue = parseInt(rangeInput[1].value);
+                    // console.log(minValue, maxValue);
+
+                    if(maxValue - minValue < inputGap){
+                        if(e.target.className === "range-min") {
+                            rangeInput[1].value = minValue + inputGap;
+                        }else {
+                            rangeInput[0].value = maxValue - inputGap;
+                        }
+                    }
+                    lengthInput[0].value = minValue;
+                    lengthInput[1].value = maxValue;
+                    progress.style.left = (minValue / rangeInput[0].max) * 100 + "%";
+                    progress.style.right = 100 - (maxValue / rangeInput[1].max) * 100 + "%";
+                })
+            })
+            lengthInput.forEach(input => {
+                input.addEventListener("input", e => {
+                    let minValue = parseInt(lengthInput[0].value);
+                    let maxValue = parseInt(lengthInput[1].value);
+
+                    if ((maxValue <= rangeInput[1].max) && (minValue > rangeInput[0].min)) {
+                        rangeInput[0].value = minValue;
+                        rangeInput[1].value = maxValue
+                        progress.style.left = (minValue / rangeInput[0].max) * 100 + "%";
+                        progress.style.right = 100 - (maxValue / rangeInput[1].max) * 100 + "%";
+                        lengthInput[0].style.backgroundColor = "#ffffff";
+                        lengthInput[1].style.backgroundColor = "#ffffff";
+                    } else if(maxValue > rangeInput[1].max) {
+                        lengthInput[1].style.backgroundColor = "#ff0000";
+                    } else {
+                        lengthInput[0].style.backgroundColor = "#ff0000";
+                    }
+                })
+            })
+        </script>
     </body>
 </html>
