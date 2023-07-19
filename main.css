@@ -1,0 +1,83 @@
+body {
+    /* display: flex; */
+    font-family:'Times New Roman', Times, serif;
+    background-color: black;
+    color: white;
+}
+.wrapper {
+    width: 400px;
+    background: rgb(8, 151, 247);
+    border-radius: 10px;
+    padding: 2px 25px 40px;
+}
+header p {
+    margin-top: 5px;
+    font-size: 16px;
+}
+.primer-length {
+    width: 100%;
+    display: flex;
+    margin: 30px 0 35px;
+}
+.primer-length .field {
+    height: 45px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.field input {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    font-size: 20px;
+    text-align: center;
+    margin-left: 12px;
+    border-radius: 5px;
+    border: 3px solid rgb(31, 121, 224);
+    -moz-appearance: textfield;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+}
+.primer-length .separator {
+    width: 100px;
+    display: flex;
+    font-size: 20px;
+    align-items: center;
+    justify-content: center;
+}
+.slider {
+    height: 5px;
+    border-radius: 5px;
+    background: #ddd;
+    position: relative;
+}
+.slider .progress {
+    height: 5px;
+    left: 25%;
+    right: 25%;
+    position: absolute;
+    border-radius: 5px;
+    background: #0a30d8;
+}
+.range-input {
+    position: relative;
+}
+.range-input input {
+    position: absolute;
+    top: -7px;
+    height: 5px;
+    width: 100%;
+    background: none;
+    pointer-events: none;
+    -webkit-appearance: none;
+}
+input[type="range"]::-webkit-slider-thumb{
+    height: 17px;
+    width: 17px;
+    border-radius: 50%;
+    pointer-events: auto;
+    -webkit-appearance: none;
+    background: #0a30d8;
+}
